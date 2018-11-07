@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <link rel="stylesheet" href="css/bootstrap.css">
+      
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+
+    <title>templatemo</title>
+</head>
+
+<body>
+  <div class"container-fluid">
+                      <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Vinculo*</label>
+                        <select id="motorista_trecho" class="form-control form-trecho" name="operacao">
+                           <option value="0">Selecionar...</option>
+                           <% adagio.get("operacoes").each(function (operacao) { %>
+                           <option value="<%= operacao.get("id") %>"><%= operacao.get("titulo") %></option>
+                           <% }); %>
+                        </select>
+                     </div>
+                     <div class="col-sm-4 s_campos">
+                        <label for="motorista_grupo" class="control-label s_labels">Grupo*</label>
+                        <select name="grupos[]" class="form-control form-grupo" id="motorista_grupo"></select>
+                     </div>
+
+
+    
+    <div >
+        <section class="col-lg-6 col-md-2 content">
+            <!-- <p>Puzzle is a Bootstrap (v3.3.6) responsive template provided by <span class="light-blue-text">templatemo</span>. You can download, edit and use this layout for absolutely free of charge.</p>
+               <p>No backlink is required to use this template. Credit goes to <span class="light-blue-text">Unsplash</span> for images used in this layout.</p>  -->
+           <div class="col-lg-6 col-md-6">
+               
+                             
+                <div class="col-lg-6 col-md-6">
+                   <img src="foto.jpg" alt="Image" class="tm-image">
+                </div>
+           </div>
+       </section>
+
+    </div>
+  </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.singlePageNav.min.js"></script>
+
+
+</body>
+</html>

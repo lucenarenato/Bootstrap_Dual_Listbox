@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>colaborador</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+   </head>
+   <body>
+      <div class="container">
+           <div class="row">
+           <div class="col-sm-6">
+
+           <form class="form-horizontal">
+           
+           <div class="form-group">
+             <label for="" class="col-sm-2 control-label">Documento</label>
+             <div class="col-sm-10">
+               <input type="nome" class="form-control" id="nome" placeholder="titulo" value="<%= view.get("titulo").toUpperCase() %>">
+             </div>
+           </div>
+           <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+               <div class="checkbox"><label><input type="checkbox" checked="checked"> <span class="text">Vencimento</span></label></div>
+             </div>
+           </div>
+           <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+               <div class="checkbox"><label><input type="checkbox" checked="checked"> <span class="text">Ativo</span></label></div>
+             </div>
+           </div>
+           <div class="form-group">
+             <hr>
+           </div>
+           <div class="form-group">
+               <label for="inputEmail3" class="col-sm-4 control-label">Opera&ccedil;&atilde;o</label>
+               <div class="col-sm-8">
+               <select class="form-control" id="inputOperacao" name="documentos-operacoes">
+               <option value="0">Selecionar...</option>
+               <% view.get('tesoes').each(function (vinculo) { %>
+                 <option value="<%= vinculo.get('id') %>"><%= vinculo.get('tesao').toString().toUpperCase() %></option>
+               <% }); %>
+             </select>
+               </div>
+             </div>
+             <div class="form-group">
+               <label for="inputPassword3" class="col-sm-4 control-label">Pasta</label>
+               <div class="col-sm-8">
+               <select class="form-control" id="inputPasta" name="documentos-pastas">
+               <option value="0">Selecionar...</option>
+               <% this.model.get("pastas").each(function (pasta) { %>
+               <option value="<%= pasta.get("id") %>"><%= pasta.get("titulo") %></option>
+               <% }); %>
+               </select>
+               </div>
+             </div>
+            
+           <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+               <button type="submit" class="btn btn-success">Salvar</button>
+             </div>
+           </div>
+         </form>
+
+           </div>
+             <div class="col-sm-6">
+
+            
+
+               
+             </div>
+           </div>
+           </div>
+   </body>
+</html>

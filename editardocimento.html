@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>colaborador</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+   </head>
+   <body>
+         
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 text-right">
+    <p class="lead operacao-autor"></p>
+    </div><!-- /.col-xs-* -->
+    <div class="col-xs-12 col-sm-4">
+      <p class="lead"><i class="fa fa-user"></i> <span id="nome-autor-registro"></span></p>
+    </div><!-- /.col-xs-* -->
+    <div class="col-xs-12 col-sm-4 text-right">
+
+    </div><!-- /.col-xs-* -->
+  </div><!-- /row -->
+  <div class="row hidden-lg">&nbsp;</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="adagio-notification"></div>
+      <div id="area_alertas"></div>
+      <div class="panel panel-default">
+        <div class="panel-heading">INSPEÃ‡ÃƒO #<%= view.get('id') %></div>
+        <div class="panel-body">
+          <form class="form-horizontal input-on-checklists">
+          <input name="timestamp" value="<%= _.now () %>" type="hidden">
+          <input name="id" value="<%= view.get('id') %>" type="hidden">
+          <fieldset><div class="form-group">
+            <label for="inputTipo" class="col-sm-3 control-label">Opera&ccedil;&atilde;o</label>
+            <div class="col-sm-3">
+              <select name="dados[tipo]" class="form-control" id="inputTipo">
+              <option value="0">Selecionar...</option>
+              <% if (view.has('operacoes')) view.get('operacoes').each(function (operacao) { %>
+                <% var selecionado = view.has('dados') && operacao.get('id') === parseInt(this.get('dados').tipo) ? " selected" : "" %>
+                <option<%= selecionado %> value="<%= operacao.get('id') %>"><%= operacao.get('operacao') %></option>
+              <% }, view); %>
+              </select>
+            </div>
+            <div class="col-sm-6"><button id="carregar-formulario-completo" type="button" class="btn btn-default">Carregar</button></div>
+          </div></fieldset>
+          <div id="checklist-form"></div>
+          </form>
+        </div><!-- panel-body -->
+      </div>
+
+<div id="painelOcorrencias" class="panel panel-inverse" style="display: none;">
+  <div class="panel-heading">Ocorr&ecirc;ncias apontadas</div>
+  <form class="input-on-checklists">
+    <table class="table">
+      <thead><tr><th scope="row">Motivo</th><th>Detalhe</th></tr></thead>
+      <tbody id="receptaculoDeOcorrencias"></tbody>
+    </table>
+  </form>
+  <div class="panel-body">
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="ocorrenciasProblema">Problema</label>
+        <select class="form-control" id="ocorrenciasProblema"><option value="0">Selecionar...</option></select>
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="ocorrenciasNota">Detalhe do problema</label>
+        <input type="text" class="form-control" id="ocorrenciasNota" placeholder="Nota">
+      </div>
+      <button id="adicionar-problema" type="submit" class="btn btn-default">Adicionar</button>
+    </form>
+  </div><!-- /.panel-body -->
+</div><!-- /.panel -->
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+
+<div id="painelEvidencias" class="panel panel-inverse" style="display: none;">
+  <div class="panel-heading">Evid&ecirc;ncias fotogr&aacute;ficas</div>
+  <form class="input-on-checklists">
+    <table class="table hidden">
+      <thead><tr><th scope="row">Imagem</th><th>Legenda</th></tr></thead>
+      <tbody id="receptaculoDeEvidencias"></tbody>
+    </table>
+  </form>
+
+  <div class="panel-body">
+    <div id="selecaoArquivo" class="row">
+      <div class="col-sm-12">
+        <form class="">
+          <div class="form-group"><input type="file" id="entradaEvidencia" name="arquivos" class="form-control" accept="image/png,image/jpeg,image/gif" multiple></div>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.panel-body -->
+  <div class="panel-footer">Apenas imagens no formato JPG, JPEG, PNG e GIF.</div>
+</div><!-- /.panel -->
+
+<div id="miniaturasDeEvidencias" class="row"></div>
+
+        </div><!-- /.col-xs-* -->
+        <div class="col-xs-12 col-sm-6">
+          <div id="painelMensagens" class="panel panel-inverse" style="display: none;">
+            <div class="panel-heading">Feedbacks</div>
+            <div class="row"><div class="col-xs-12"><textarea id="conteudoComentario" class="form-control" style="border-radius:0;"></textarea></div></div>
+            <div class="row">
+              <div class="col-xs-8"><input id="anexoComentario" type="file" class="form-control" multiple></div>
+              <div class="col-xs-4"><a href="#" id="incluirComentarioNoModelo" class="btn btn-link btn-block"><i class="fa fa-reply" aria-hidden="true"></i> Responder</a></div>
+            </div>
+            <div id="receptaculoDeComentarios" class="panel-body" style="border-top: solid 1px #ccc;">
+            </div><!-- /.panel-body -->
+          </div><!-- /.panel -->
+        </div><!-- /.col-xs-* -->
+      </div><!-- /.row -->
+
+      <div class="row" style="height: 70px;">&nbsp;</div><!-- /.row -->
+    </div>
+  </div>
+  </div>
+  
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+  <span class="pull-right">
+    <span class="navbar-text metadata-info-edition"></span>
+    <div class="btn-group dropup navbar-btn">
+      <button id="mostra-status" type="button" class="btn btn-default operacao-status">Carregando...</button>
+      <button id="controle-status" type="button" class="btn btn-default operacao-status dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu">
+      <li><a href="#" class="codigo-status" data-codigo-status="1">Reprovado</a></li>
+      <li><a href="#" class="codigo-status" data-codigo-status="3">Corrigido</a></li>
+      <li><a href="#" class="codigo-status" data-codigo-status="5">Aprovado</a></li>
+      </ul>
+    </div><!-- /.btn-group -->
+    <button type="button" class="btn btn-primary checklist-set navbar-btn">Salvar</button>
+  </span>
+  </div>
+</nav>
+  
+  
+  <fieldset><div class="form-group">
+      <label for="placas[<%= view.indice %>]" class="col-sm-3 control-label">Placa</label>
+      <div class="col-sm-3"><div class="input-group">
+      <input class="form-control" type="text" id="placas[<%= view.indice %>]" name="placas[<%= view.indice %>]" value="<%= view.portaPlaca %>">
+      <span class="input-group-btn"><button class="btn btn-default averiguar-placa" type="button"><i class="fa fa-fw fa-search"></i></button></span>
+      </div><p class="help-block">Placa VeÃ­culo</p></div>
+      <!--
+      <div class="col-sm-3"><input class="form-control" type="text" id="placas[<%= view.indice %>]" name="placas[<%= view.indice %>]" value="<%= view.portaPlaca %>"><p class="help-block">Placa VeÃ­culo</p></div>
+      -->
+      <div class="col-sm-3"><input class="form-control" type="text" name="numeros[<%= view.indice %>]" value="<%= view.portaNumero %>"><p class="help-block">NÃºmero Frota</p></div>
+      <div class="col-sm-3">
+      <select class="form-control autocategorias" name="categorias[<%= view.indice %>]">
+      <option value="0">Selecionar...</option>
+      <% view.autocategorias.each(function (vinculo) { %>
+      <option value="<%= vinculo.get('id') %>"<% print (vinculo.get('id') == view.portaCategoria ? " selected" : "") %>><%= vinculo.get('autocategoria') %></option>
+      <% }); %>
+      </select>
+      <p class="help-block">Categoria VeÃ­culo</p>
+      </div>
+      </div></fieldset>
+   </body>
+</html>

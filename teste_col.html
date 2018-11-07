@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<title>col</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+		
+	</head>
+	<body>
+		<form class="form-horizontal panel-body off" id="box_colaborador">
+		   <input type="hidden" value="colaborador" name="formulario">
+		   <div class="row">
+			   <div class="col-xs-3">
+			      <div class="col-sm-12 text-center"><img src="/storage/<% print(this.model.attributes.foto) %>" style="height:200px; width:auto;" class="img-thumbnail" /></div>
+			   </div>
+			   <div class="col-xs-9">
+			      <div class="row">
+			         <div class="col-sm-4 s_campos">
+			            <!--na consulta de operacao, esta desabilitado a opçao de mudar no select-->
+			            <label class="control-label s_labels">Operação</label>                                    
+			            <% view.get("operacoes").each(function (operacao) { %>
+			            <p class="form-control-static id="trecho"">
+			               <option value="<%= operacao.get("id") %>"<%= (view.get("dados").tesao_id === operacao.get("id") ? " selected" : "") %>><%= operacao.get("titulo") %></option>
+			               <% }); %>
+			               </select>
+			            </P>
+			         </div>
+			         <div class="col-sm-4 s_campos">
+			            <label class="control-label s_labels">Grupo*</label>
+			            <select id="motorista_grupo" class="form-control form-grupo" name="grupos[]"></select>
+			         </div>
+			         <div class="col-sm-4 s_campos">
+			            <label class="control-label s_labels">Vinculo*</label>                                                                      
+			            <select class="form-control" id="trecho" name="operacao">
+			               <option value="<% print(this.model.attributes.dados.vinculo); %>"><% print(this.model.attributes.vinculo); %></option>
+			               <optgroup label="Disponíveis">
+			                  <option value="3">CLT</option>
+			                  <option value="4">Pessoa Juridica</option>
+			                  <option value="5">Prestador de Serviço</option>
+			               </optgroup>
+			            </select>
+			         </div>
+			        </div>
+			         <div class="row">
+			            <div class="col-sm-6 s_campos">
+			               <label class="control-label s_labels">Nome*</label>
+			               <input name="nome_condutor"  id="nome_condutor" type="text" class="form-control" placeholder="Digite o nome" value="<% print(this.model.attributes.dados.nome_condutor) %>"/>
+			            </div>
+			            <div class="col-sm-3 s_campos">
+			               <label class="control-label s_labels">RG*</label>
+			               <input name="rg_condutor" type="text" id="rg_condutor" maxlength="11" class="form-control" placeholder="Digite o RG" value="<% print(this.model.attributes.dados.rg_condutor) %>"/>
+			            </div>
+			            <div class="col-sm-3 s_campos">
+			               <label class="control-label s_labels">CPF*</label>
+			               <p class="form-control-static"><%= this.model.attributes.dados.cpf_condutor %></p>
+			               <input name="cpf_condutor" type="hidden" id="cpf_condutor" value="<% print(this.model.attributes.dados.cpf_condutor) %>">
+			            </div>
+			         </div>
+			      </div>
+			   </div>
+			   <div class="row">
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Função*</label>
+			         <input name="funcao"  id="funcao" type="text" class="form-control" placeholder="Digite o cargo" value="<% print(this.model.attributes.dados.funcao) %>"/>
+			      </div>
+			      <div class="col-sm-2 s_campos">
+			         <label class="control-label s_labels" for="uf">UF</label>
+			         <select name="uf" class="form-control form-uf" id="acionamento_uf_id">
+			            <option value="0">Selecionar...</option>
+			            <% view.get("ufsCol").each (function (ufs) { %>   
+			            <option <%= (ufs.get('id') === parseInt(view.get("uf")) ? "selected" : "") %> class="oculto" value="<%= ufs.get('id') %>"><%= ufs.get('uf') %></option>
+			            <% }); %>
+			         </select>
+			      </div>
+			      <div class="col-sm-4 s_campos">
+			         <label class="control-label s_labels">Município</label>
+			         <select name="municipio" class="form-control form-municipio" id="acionamento_municipio_id">
+			            <option value="0" class="oculto">Selecionar...</option>
+			         </select>
+			      </div>
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Nascimento*</label>
+			         <div class="input-group date">
+			            <input name="nascimento_condutor" id="nascimento_condutor" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly" value="<% print(this.model.attributes.nascimento_condutor) %>"/>
+			            <span class="input-group-addon">
+			            <i class="fa fa-fw fa-calendar"></i>
+			            </span>
+			         </div>
+			      </div>
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Contato*</label>
+			         <input name="celular" type="text" id="celular" class="form-control" placeholder="" value="<% print(this.model.attributes.dados.celular) %>" maxlength="14"/>
+			      </div>
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Contato 2*</label>
+			         <input name="telefone" type="text" id="telefone" class="form-control" placeholder="" value="<% print(this.model.attributes.dados.celular) %>" maxlength="14"/>
+			      </div>
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Contratação</label>
+			         <div class="input-group date">
+			            <input name="contratacao" id="contratacao" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly" value="<% print(this.model.attributes.contratacao) %>"/>
+			            <span class="input-group-addon">
+			            <i class="fa fa-fw fa-calendar"></i>
+			            </span>
+			         </div>
+			      </div>
+			      <div class="col-sm-3 s_campos">
+			         <label class="control-label s_labels">Data de inativação:</label>
+			         <input name="inativacao"  id="inativacao" type="text" class="form-control" placeholder="" value="<% print(this.model.attributes.dados.deleted_at) %>" disabled/>                                    
+			      </div>
+			   </div>
+			   <hr>
+			   <div class="col-sm-offset-11">
+			      <button type="button" class="btn btn-primary btn-block" id="salvar_colaborador">Salvar</button>
+			   </div>
+			</div>
+</form>
+	</body>
+</html>

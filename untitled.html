@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/bootstrap.css">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+   <title>teste</title>
+</head>
+<body>
+   <!-- content -->
+   <form class="form-horizontal panel-body">
+   <section class="main">
+      <div class="container grid-custom">
+         <div class="row">
+            <div class="row col-sm-6 s_campos">
+               <div class="col-sm-2">
+                  <img src="" alt="" class="img-responsive">
+                  <label class="control-label s_labels">Vinculo*</label>
+                  <select id="motorista_trecho" class="form-control form-trecho" name="operacao">
+                     <option value="0">Selecionar...</option>
+                     <% adagio.get("operacoes").each(function (operacao) { %>
+                     <option value="<%= operacao.get("id") %>"><%= operacao.get("titulo") %></option>
+                     <% }); %>
+                  </select>
+               </div>
+               <div class="col-xs-4">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-4 s_campos">
+                     <label for="motorista_grupo" class="control-label s_labels">Grupo*</label>
+                     <select name="grupos[]" class="form-control form-grupo" id="motorista_grupo"></select>
+                  </div>
+               </div>
+               <div class="col-xs-2">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">Alocado</label>
+                     <select id="motorista_regiao_leiteira_id" class="form-control form-planta" name="regiao_leiteira_id"></select>
+                  </div>
+               </div>
+               <div class="col-xs-6">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-6 s_campos">
+                     <label class="control-label s_labels">Nome*</label>
+                     <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                  </div>
+               </div>
+               <div class="col-xs-6">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">RG*</label>
+                     <input name="rg_condutor" type="text" id="rg_condutor" maxlength="11" class="form-control" placeholder="Digite o RG"/>
+                  </div>
+               </div>
+               <div class="col-xs-4">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">CPF*</label>
+                     <input name="cpf_condutor" type="text" id="cpf_condutor" class="form-control" maxlength="11" placeholder="Digite o CPF"/>
+                  </div>
+               </div>
+               <div class="col-xs-6">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">Função*</label>
+                     <select class="form-control" id="funcao" name="funcao">
+                        <option value="">--</option>
+                        <option value="1">Motorista</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="col-xs-2">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">UF*</label>
+                     <select class="form-control" id="uf" name="uf">
+                        <option value="">--</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="col-xs-4">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">Nascimento*</label>
+                     <div class="input-group date">
+                        <input name="nascimento_condutor" id="nascimento_condutor" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly"/>
+                        <span class="input-group-addon">
+                        <i class="fa fa-fw fa-calendar"></i>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xs-4">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">Celular*</label>
+                     <input name="celular" type="text" id="celular" class="form-control" placeholder="Digite o celular" maxlength="14"/>
+                  </div>
+               </div>
+               <div class="col-xs-4">
+                  <img src="" alt="" class="img-responsive">
+                  <div class="col-sm-3 s_campos">
+                     <label class="control-label s_labels">Contratação</label>
+                     <div class="input-group date">
+                        <input name="contratacao" id="contratacao" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly"/>
+                        <span class="input-group-addon">
+                        <i class="fa fa-fw fa-calendar"></i>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-6">
+               <img src="foto.jpg" alt="" class="img-responsive center-block">
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <hr>
+      </div>
+      <fieldset>
+         <div class="col-sm-offset-11">
+            <button type="button" class="btn btn-primary btn-block" id="salvar_motorista">Salvar</button>
+         </div>
+      </fieldset>
+      <div class="footer-push"></div>
+   </section>
+ </form>
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery.singlePageNav.min.js"></script>
+</body>
+</html>
