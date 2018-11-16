@@ -1,0 +1,173 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Modal - grupos</title>
+ <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      
+      <link rel="stylesheet" type="text/css" href="../css/bootstrap-duallistbox.css">
+      <link rel="stylesheet" type="text/css" href="css/questionarios.css">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      
+      <script src="../js/jquery.bootstrap-duallistbox.js"></script>
+      <script src=""></script>
+   </head>
+   <body class="container">
+      <div id="grupos-edit"></div>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="adagio-notification"></div>
+               <nav class="navbar navbar-inverse">
+                  <div class="container-fluid">
+                     <!-- Brand and toggle get grouped for better mobile display -->
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                     </div>
+                     <!-- Collect the nav links, forms, and other content for toggling -->
+                     <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <form class="navbar-form navbar-left inserir-grupo" id="inserir-grupo">
+                           <div class="form-group">
+                              <input type="text" class="form-control" name="grupo">
+                           </div>
+                           <select class="form-control" name="proprietario">
+                              <option value="0">Selecionar...</option>
+                              <% if (this.collection.todos) this.collection.todos.each (function (usuario) { %>
+                              <option value="<%= usuario.get ('id') %>"><%= usuario.get ('nome') %></option>
+                              <% }); %>
+                           </select>
+                           <button type="submit" class="btn btn-success btn-default">Adicionar</button>
+                        </form>
+                        <a class="btn btn-success btn-sm" style="float:inline-end"; data-toggle="modal" data-target="#modal-success">NOVO</a>
+                        <!--/* <button href="#!<//%//= adagio.environment.getTenancy('grupos/create') %>" class="btn btn-primary btn-default">Novo Grupo</button> */-->
+                        <ul class="nav navbar-nav navbar-right">
+                           <li><a href="#!<%= adagio.environment.getTenancy('grupos') %>">Voltar</a></li>
+                        </ul>
+                     </div>
+                     <!-- /.navbar-collapse -->
+                  </div>
+                  <!-- /.container-fluid -->
+               </nav>
+            </div>
+         </div>
+         <div id="modal-success" class="modal fade modal-success fade" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <i class="pe-7s-mail"></i>
+                  </div>
+                  <h2 style="padding-left: 15px;padding-bottom: 15px;">Novo Grupo</h2>
+                  <div class="">
+                     <form class="form-horizontal form-registrar" id="form-registrar">
+                        <div class="form-group">
+      <label for="inputObjeto" class="col-sm-4 control-label">Nome do Grupo</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="inputObjeto" placeholder="" value="<%= view.get('nome').toString().toUpperCase() %>" name="nome">
+        <input type="hidden" value="<%= view.get('ativo') %>" name="ativo"></input>
+        <input type="hidden" value="<%= view.get('id') %>" name="id"></input>
+      </div>
+    </div>
+			<div class="form-group">
+      <label for="inputPassword3" class="col-sm-4 control-label">Proprietário</label>
+      <div class="col-sm-8">
+        <select class="form-control" name="proprietario">
+          <option value="0">Selecionar...</option>
+          <% if (this.collection.todos) this.collection.todos.each(function (usuario) { %>
+            <option value="<%= usuario.get('id') %>" <%= (parseInt(view.get('proprietario')) === usuario.get('id') ? 'selected' : '') %>><%= usuario.get('nome') %></option>
+          <% }); %>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputContexto" class="col-sm-4 control-label">Contexto</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="inputContexto" name="contexto">
+          <option value="0">Selecionar...</option>
+          <% if (this.collection.contextos) this.collection.contextos.each(function (contexto) { %>
+            <option value="<%= contexto.get('id') %>" <%= (parseInt(view.get('contexto')) === contexto.get('id') ? 'selected' : '') %>><%= contexto.get('contexto').toString().toUpperCase() %></option>
+          <% }); %>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+    <!--<label for="inputOperacao" class="col-sm-4 control-label">Opera&ccedil;&atilde;o</label>-->
+    <label for="inputOperacao" class="col-sm-4 control-label">Percurso</label>
+    <div class="col-sm-8">
+      <select class="form-control" id="inputOperacao" name="operacao">
+        <option value="0">Selecionar...</option>
+        <% if (this.collection.operacoes) this.collection.operacoes.each(function (operacao) { %>
+          <option value="<%= operacao.get('id') %>" <%= (parseInt(view.get('operacao_id')) === operacao.get('id') ? 'selected' : '') %>><%= operacao.get('titulo').toString().toUpperCase() %></option>
+        <% }); %>
+      </select>
+    </div>
+  </div>
+    <div class="form-group">
+    <label for="inputTipo" class="col-sm-4 control-label">Tipo</label>
+    <div class="col-sm-8">
+      <select class="form-control" id="inputTipo" name="tipo">
+        <option value="0">Selecionar...</option>
+        <% _.each([{"id":1,"titulo":"Transportadora"},{"id":2,"titulo":"Filial"},{"id":3,"titulo":"Setor"}], function (tipo) { %>
+          <option value="<%= tipo.id %>" <%= (parseInt(view.get('tipo')) === tipo.id ? 'selected' : '') %>><%= tipo.titulo.toString().toUpperCase() %></option>
+        <% }); %>
+      </select>
+    </div>
+  </div>
+  <hr>
+    <div class="form-group">
+      <label for="inputApelido" class="col-sm-4 control-label">Apelido</label>
+      <div class="col-sm-8"><input type="text" class="form-control" id="inputApelido" placeholder="" value="<%= view.get('apelido') %>" name="apelido"></div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-4 control-label">Descrição</label>
+      <div class="col-sm-8"><textarea class="form-control" name="descricao"><%= view.get('descricao') || '' %></textarea></div>
+    </div>
+                        <div class="form-group">
+                           <label class="col-sm-4 control-label" for="descricao_questionario">Descrição
+                           </label>
+                           <div class="col-sm-6">
+                              <input id="descricao_questionario" name="descricao_questionario" class="form-control" type="text" required>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <div class="col-sm-offset-4 col-sm-8" style="padding-bottom: 10px;"><button type="submit" class="btn btn-success">Cadastrar</button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+               <!-- / .modal-content -->
+            </div>
+            <!-- / .modal-dialog -->
+         </div>
+         <!--End success Modal Templates-->
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="panel panel-default">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th><span class="visible-lg-inline-block">Contexto</span></th>
+                           <th>Nome</th>
+                           <th><span class="visible-md-inline-block visible-lg-inline-block">Propriedade</span></th>
+                           <th></th>
+                           <th></th>
+                        </tr>
+                     </thead>
+                     <tbody id="usergroups">
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <!-- /.col-md-12 -->
+         </div>
+         <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+      <!--End success Modal Templates-->
+
+

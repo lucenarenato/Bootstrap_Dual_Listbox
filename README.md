@@ -1,7 +1,7 @@
 # Bibliotecas de teste
 ## Bootstrap_Dual_Listbox
 ## Select 2
-
+<hr>
 - Renato Lucena 11/2018
 
 <hr>
