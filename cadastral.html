@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>cadastral</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+   </head>
+   <body>
+      <!-- <div id="modalVencidos"></div> -->
+      <!-- <div class="container-fluid">
+         <div class="row" id="escolha_cadastro">
+           <div class="col-sm-12">
+             <div class="panel">
+               <form class="form-horizontal panel-body">
+                 <h4>Escolha o tipo de consulta</h4>
+                 <select class="form-control">
+                   <option value="0">Selecionar...</option>
+                   <% adagio.get("pastas").each(function (pasta) { %>
+                   <option value="<%= pasta.get("id") %>"><%= pasta.get("titulo") %></option>
+                   <% }); %>
+                 </select>
+               </form>
+             </div>
+           </div>
+         </div> -->
+    <div class="container-fluid">
+      <div class="row off" id="box_veiculo">
+         <!--ini cadastro veículo-->
+         <div class="col-sm-12">
+            <!--ini row principal-->
+            <div class="panel panel-default">
+               <!--ini card-->
+               <form class="form-horizontal panel-body">
+                  <input type="hidden" name="formulario" value="veiculo">
+                  <div class="row">
+                    <div class="col-sm-12 s_campos">
+                        <h3><span class="label label-default">Klios</span> Analise Cadastral</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Opera&ccedil;&atilde;o*</label>
+                        <select id="veiculo_trecho" name="operacao" class="form-control form-trecho">
+                           <option value="0">Selecionar...</option>
+                           <% adagio.get("operacoes").each(function (operacao) { %>
+                           <option value="<%= operacao.get("id") %>"><%= operacao.get("titulo") %></option>
+                           <% }); %>
+                        </select>
+                     </div>
+                     <div class="col-sm-5 s_campos">
+                        <label for="veiculo_grupo" class="control-label s_labels">Grupo*</label>
+                        <select name="grupos[]" class="form-control form-grupo" id="veiculo_grupo"></select>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels col-md-offset-4">Data preenchimento</label>
+                        <div class="input-group date">
+                           <input name="inicio_operacao" id="inicio_operacao" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly"/>
+                           <span class="input-group-addon">
+                           <i class="fa fa-fw fa-calendar"></i>
+                           </span>
+                        </div>
+                     </div>
+
+                  </div>
+
+
+                  <div class="row">
+
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Placa*</label>
+                        <input name="placa_veiculo" id="placa_veiculo" type="text" class="form-control" placeholder="Digite a placa" maxlength="7"/>
+                     </div>
+
+
+                  </div>
+                  <div class="row">
+                     <hr>
+                  </div>
+                  <fieldset>
+                     <div class="col-sm-offset-11">
+                        <button type="button" class="btn btn-primary btn-block" id="salvar_veiculo">Salvar</button>
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+            <!--fim card-->
+         </div>
+         <!--fim row principal-->
+      </div></div>
+      <!--fim cadastro veículo-->
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+
+   </body>
+</html>

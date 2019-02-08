@@ -1,0 +1,125 @@
+<!--inicio form colaborador-->
+                        <form class="form-horizontal panel-body off" id="box_colaborador">
+                            <input type="hidden" value="colaborador" name="formulario">
+                            <div class="row">
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Vinculo*</label>
+                                    <select name="operacao" id="trecho" class="form-control">
+                                    <option value="0">Selecionar...</option>
+                                    <% view.get("operacoes").each(function (operacao) { %>
+                                    <option value="<%= operacao.get("id") %>"<%= (view.get("dados").tesao_id === operacao.get("id") ? " selected" : "") %>><%= operacao.get("titulo") %></option>
+                                    <% }); %>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 s_campos">
+                                    <label class="control-label s_labels">Grupo*</label>
+                                    <select id="motorista_grupo" class="form-control form-grupo" name="grupos[]"></select>
+                                </div>                                
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Alocado*</label>
+    <select name="regiao_leiteira_id" id="regiao_leiteira_id" class="form-control form-planta"></select>
+                                </div>
+
+                                <div class="col-sm-6 s_campos">
+                                    <label class="control-label s_labels">Nome*</label>
+                                    <input name="nome_condutor"  id="nome_condutor" type="text" class="form-control" placeholder="Digite o nome" value="<% print(this.model.attributes.dados.nome_condutor) %>"/>
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">RG*</label>
+                                    <input name="rg_condutor" type="text" id="rg_condutor" maxlength="11" class="form-control" placeholder="Digite o RG" value="<% print(this.model.attributes.dados.rg_condutor) %>"/>
+                                </div>
+
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">CPF*</label>
+                                    <p class="form-control-static"><%= this.model.attributes.dados.cpf_condutor %></p>
+                                    <input name="cpf_condutor" type="hidden" id="cpf_condutor" value="<% print(this.model.attributes.dados.cpf_condutor) %>">
+                                </div>
+
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Função*</label>
+                                    <input name="funcao"  id="funcao" type="text" class="form-control" placeholder="Digite o cargo" value="<% print(this.model.attributes.dados.funcao) %>"/>
+                                </div>
+
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">UF*</label>
+                                    <select class="form-control" id="uf" name="uf">
+                                        <option value="<% print(this.model.attributes.dados.uf) %>"><% print(this.model.attributes.dados.uf) %></option>
+                                        <optgroup label="Disponíveis">
+                                            <option value="AC">AC</option>
+                                            <option value="AL">AL</option>
+                                            <option value="AP">AP</option>
+                                            <option value="AM">AM</option>
+                                            <option value="BA">BA</option>
+                                            <option value="CE">CE</option>
+                                            <option value="DF">DF</option>
+                                            <option value="ES">ES</option>
+                                            <option value="GO">GO</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MT">MT</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MG">MG</option>
+                                            <option value="PA">PA</option>
+                                            <option value="PB">PB</option>
+                                            <option value="PR">PR</option>
+                                            <option value="PE">PE</option>
+                                            <option value="PI">PI</option>
+                                            <option value="RJ">RJ</option>
+                                            <option value="RN">RN</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RO">RO</option>
+                                            <option value="RR">RR</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SP">SP</option>
+                                            <option value="SE">SE</option>
+                                            <option value="TO">TO</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Nascimento*</label>
+                                    <div class="input-group date">
+                                        <input name="nascimento_condutor" id="nascimento_condutor" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly" value="<% print(this.model.attributes.nascimento_condutor) %>"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Celular*</label>
+                                    <input name="celular" type="text" id="celular" class="form-control" placeholder="Digite o celular" value="<% print(this.model.attributes.dados.celular) %>" maxlength="14"/>
+                                </div>
+
+                                <div class="col-sm-3 s_campos">
+                                    <label class="control-label s_labels">Contratação</label>
+                                    <div class="input-group date">
+                                        <input name="contratacao" id="contratacao" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly" value="<% print(this.model.attributes.contratacao) %>"/>
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>                                                           
+
+                            </div>
+
+                            <hr>
+
+                            <div class="col-sm-offset-11">
+                                <button type="button" class="btn btn-primary btn-block" id="salvar_colaborador">Salvar</button>
+                            </div>
+
+                        </form>
+                        <!--fim form colaborador-->

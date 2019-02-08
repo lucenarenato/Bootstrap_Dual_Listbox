@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+   <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>cadastral</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/popup-form.css" type="text/css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+   </head>
+   <body>
+      <!-- <div id="modalVencidos"></div> -->
+      <!-- <div class="container-fluid">
+         <div class="row" id="escolha_cadastro">
+           <div class="col-sm-12">
+             <div class="panel">
+               <form class="form-horizontal panel-body">
+                 <h4>Escolha o tipo de consulta</h4>
+                 <select class="form-control">
+                   <option value="0">Selecionar...</option>
+                   <% adagio.get("pastas").each(function (pasta) { %>
+                   <option value="<%= pasta.get("id") %>"><%= pasta.get("titulo") %></option>
+                   <% }); %>
+                 </select>
+               </form>
+             </div>
+           </div>
+         </div> -->
+    <div class="container-fluid">
+      <div class="row off" id="box_veiculo">
+         <!--ini cadastro veículo-->
+         <div class="col-sm-12">
+            <!--ini row principal-->
+            <div class="panel panel-default">
+               <!--ini card-->
+               <form class="popup-form" data-toggle="validator" id="quoteForm" name="quoteForm">
+                  <input type="hidden" name="formulario" value="veiculo">
+                  <div class="row">
+                    <div class="col-sm-12 s_campos">
+                        <h3><span class="label label-default">Klios</span> Analise Cadastral</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Opera&ccedil;&atilde;o*</label>
+                        <select id="veiculo_trecho" name="operacao" class="form-control form-trecho">
+                           <option value="0">Selecionar...</option>
+                           <% adagio.get("operacoes").each(function (operacao) { %>
+                           <option value="<%= operacao.get("id") %>"><%= operacao.get("titulo") %></option>
+                           <% }); %>
+                        </select>
+                     </div>
+                     <div class="form-group col-sm-5">
+                        <label for="veiculo_grupo" class="control-label s_labels">Grupo*</label>
+                        <select name="grupos[]" class="form-control form-grupo" id="veiculo_grupo" required data-error="Selecione grupo"><option value="">--- Selecione grupo* ---</option></select>
+                     </div>
+
+
+                     <br>
+                  </div>
+<hr>
+
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <div class="help-block with-errors"></div>
+                      <input name="fname7" id="fname7" placeholder="Nome completo*" class="form-control" type="text" required data-error="Nome">
+                      <div class="input-group-icon"><i class="fa fa-user"></i></div>
+                    </div><!-- end form-group -->
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <input name="rg" id="rg" placeholder="RG*" class="form-control" type="text" required data-error="RG">
+                      <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div><!-- end form-group -->
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <input name="cpf" id="cpf" placeholder="CPF*" class="form-control" type="text" required data-error="CPF">
+                      <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div><!-- end form-group -->
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-4">
+                      <div class="help-block with-errors"></div>
+                      <input name="telefone" id="telefone" placeholder="Telefone de contato*" class="form-control" type="text" required data-error="Coloque telefone válido">
+                      <div class="input-group-icon"><i class="fa fa-phone"></i></div>
+                    </div><!-- end form-group -->
+                    <div class="form-group col-sm-2">
+                      <div class="help-block with-errors"></div>
+                       <input name="placa_veiculo" id="placa_veiculo" type="text" class="form-control" placeholder="Placa caminhão|Cavalo-Trator" maxlength="7"/>
+                       <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <div class="help-block with-errors"></div>
+                       <input name="placa_veiculo" id="placa_veiculo" type="text" class="form-control" placeholder="Placa Carreta 1" maxlength="7"/>
+                       <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <div class="help-block with-errors"></div>
+                       <input name="placa_veiculo" id="placa_veiculo" type="text" class="form-control" placeholder="Placa Carreta 2" maxlength="7"/>
+                       <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                      <div class="help-block with-errors"></div>
+                       <input name="funcao" id="funcao" type="text" class="form-control" placeholder="Função" maxlength="7"/>
+                       <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                     <hr>
+                  </div>
+                  <fieldset>
+                     <div class="col-sm-offset-10">
+                        <button type="button" class="btn btn-custom" id="salvar_veiculo">Salvar</button>
+                     </div>
+                  </fieldset>
+               </form>
+               <span class="sub-text">* Campos requeridos</span>
+            </div>
+            <!--fim card-->
+         </div>
+         <!--fim row principal-->
+      </div></div>
+      <!--fim cadastro veículo-->
+
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- jQuery Library -->
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <!-- Popper js -->
+      <script src="js/popper.min.js"></script>
+      <!-- Form Validator -->
+      <script src="js/validator.min.js"></script>
+      <!-- Popup Form main Js -->
+      <script src="js/popup-form.js"></script>
+
+   </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>colaborador</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src=""></script>
+      <script src=""></script>
+   </head>
+   <body>
+      <div class="row off" id="box_colaborador">
+         <!--ini cadastro empresa-->
+         <div class="col-sm-12">
+            <!--ini row principal-->
+            <div class="panel panel-default">
+               <!--ini card -->
+               <form class="form-horizontal panel-body">
+                  <input type="hidden" name="formulario" value="empresa">
+                  <div class="row">
+                     <div class="col-sm-4 s_campos">
+                        <label class="control-label s_labels">Razão Social*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                     </div>
+                     <div class="col-sm-4 s_campos">
+                        <label class="control-label s_labels">Nome Fantasia*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">CNPJ:*</label>
+                        <input name="cpf_colaborador" type="text" id="cpf_colaborador" class="form-control" maxlength="11" placeholder="Digite o CNPJ"/>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Insc.Estadual*</label>
+                        <input name="cpf_colaborador" type="text" id="cpf_colaborador" class="form-control" maxlength="11" placeholder="Digite o CNPJ"/>
+                     </div>
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Insc.Municipal*</label>
+                        <input name="cpf_colaborador" type="text" id="cpf_colaborador" class="form-control" maxlength="11" placeholder="Digite o CNPJ"/>
+                     </div>
+                     <div class="col-sm-4 s_campos">
+                        <label class="control-label s_labels">Endereço*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite Endereço"/>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">UF*</label>
+                        <select class="form-control" id="uf" name="uf">
+                           <option value="">--</option>
+                           <option value="AC">AC</option>
+                           <option value="AL">AL</option>
+                           <option value="AP">AP</option>
+                           <option value="AM">AM</option>
+                           <option value="BA">BA</option>
+                           <option value="CE">CE</option>
+                           <option value="DF">DF</option>
+                           <option value="ES">ES</option>
+                           <option value="GO">GO</option>
+                           <option value="MA">MA</option>
+                           <option value="MT">MT</option>
+                           <option value="MS">MS</option>
+                           <option value="MG">MG</option>
+                           <option value="PA">PA</option>
+                           <option value="PB">PB</option>
+                           <option value="PR">PR</option>
+                           <option value="PE">PE</option>
+                           <option value="PI">PI</option>
+                           <option value="RJ">RJ</option>
+                           <option value="RN">RN</option>
+                           <option value="RS">RS</option>
+                           <option value="RO">RO</option>
+                           <option value="RR">RR</option>
+                           <option value="SC">SC</option>
+                           <option value="SP">SP</option>
+                           <option value="SE">SE</option>
+                           <option value="TO">TO</option>
+                        </select>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">Bairro*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">Cidade*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                     </div>
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Telefone*</label>
+                        <input name="celular" type="text" id="celular" class="form-control" placeholder="Digite numeros" maxlength="14"/>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">E-Mail*</label>
+                        <input name="nome_condutor" type="text" id="nome_condutor" class="form-control" placeholder="Digite o nome"/>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">Constituição Contrato Social*</label>
+                        <div class="input-group date">
+                           <input name="nascimento_condutor" id="nascimento_condutor" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly"/>
+                           <span class="input-group-addon">
+                           <i class="fa fa-fw fa-calendar"></i>
+                           </span>
+                        </div>
+                     </div>
+                     <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">Ultima Alteração Contrato</label>
+                        <div class="input-group date">
+                           <input name="contratacao" id="contratacao" type="text" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" readonly="readonly"/>
+                           <span class="input-group-addon">
+                           <i class="fa fa-fw fa-calendar"></i>
+                           </span>
+                        </div>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <hr>
+                  </div>
+                  <fieldset>
+                     <div class="col-sm-offset-11">
+                        <button type="button" class="btn btn-primary btn-block" id="salvar_colaborador">Salvar</button>
+                     </div>
+                  </fieldset>
+               </form>
+            </div>
+            <!--fim card-->
+         </div>
+         <!--fim row principal-->
+      </div>
+      <!--fim cadastro empresa-->
+   </body>
+</html>

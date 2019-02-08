@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Curricular</title>
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/popup-form.css" type="text/css">
+      <style media="screen">
+      .onoff input.toggle {
+          display: none;
+          }
+
+          .onoff input.toggle + label {
+          display: inline-block;
+          position: relative;
+          box-shadow: inset 0 0 0px 1px #d5d5d5;
+          height: 30px;
+          width: 50px;
+          border-radius: 30px;
+          }
+
+          .onoff input.toggle + label:before {
+          content: "";
+          display: block;
+          height: 30px;
+          width: 30px;
+          border-radius: 30px;
+          background: rgba(19, 191, 17, 0);
+          transition: 0.1s ease-in-out;
+          }
+
+          .onoff input.toggle + label:after {
+          content: "";
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          top: 0;
+          left: 0px;
+          border-radius: 30px;
+          background: #fff;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+          transition: 0.1s ease-in-out;
+          }
+
+          .onoff input.toggle:checked + label:before {
+          width: 50px;
+          background: #13bf11;
+          }
+
+          .onoff input.toggle:checked + label:after {
+          left: 20px;
+          box-shadow: inset 0 0 0 1px #13bf11, 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+
+      </style>
+      <!-- Latest compiled and minified JavaScript -->
+      <script type="text/javascript">
+
+      /*var estado = document.getElementById('estado');
+        $('#onoff1').on('change', function() {
+          var el = this;
+          estado.innerHTML = el.checked ? 'ligado' : 'desligado';
+
+          // aqui podes juntar a lógica do ajax
+          $.ajax({
+              url: "some.php",
+              data: {
+                  estado: this.checked
+              }
+          }).done(function(msg) {
+              if (msg == 'failed') return el.checked = !el.checked; // caso o servidor retorne "failed" mudar o estado do botão
+              else alert("Info gravada: " + msg);
+          });
+        });*/
+      </script>
+      <!-- <script type="text/javascript">
+      var onoff = document.getElementById('onoff1');
+      var estado = document.getElementById('estado');
+      onoff.addEventListener('change', function() {
+          estado.innerHTML = this.checked ? 'ligado' : 'desligado';
+      });
+
+      </script> -->
+   </head>
+   <body>
+      <!-- <div id="modalVencidos"></div> -->
+      <!-- <div class="container-fluid">
+         <div class="row" id="escolha_cadastro">
+           <div class="col-sm-12">
+             <div class="panel">
+               <form class="form-horizontal panel-body">
+                 <h4>Escolha o tipo de consulta</h4>
+                 <select class="form-control">
+                   <option value="0">Selecionar...</option>
+                   <% adagio.get("pastas").each(function (pasta) { %>
+                   <option value="<%= pasta.get("id") %>"><%= pasta.get("titulo") %></option>
+                   <% }); %>
+                 </select>
+               </form>
+             </div>
+           </div>
+         </div> -->
+      <div class="container-fluid">
+      <div class="row off" id="box_motorista">
+         <!--ini cadastro motorista-->
+         <div class="col-sm-12">
+            <!--ini row principal-->
+            <div class="panel panel-default">
+               <!--ini card -->
+               <form class="popup-form" data-toggle="validator" id="quoteForm" name="quoteForm">
+                  <input type="hidden" name="formulario" value="motorista">
+                  <div class="row">
+                     <div class="col-sm-12 s_campos">
+                        <h3><span class="label label-default">Klios</span> Analise Curricular</h3>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">*</label>
+                        <select id="motorista_trecho" class="form-control form-trecho" name="operacao">
+                           <option value="0">Selecionar...</option>
+                           <% adagio.get("operacoes").each(function (operacao) { %>
+                           <option value="<%= operacao.get("id") %>"><%= operacao.get("titulo") %></option>
+                           <% }); %>
+                        </select>
+                     </div>
+                     <div class="col-sm-5 s_campos">
+                        <label for="motorista_grupo" class="control-label s_labels">Grupo*</label>
+                        <select name="grupos[]" class="form-control form-grupo" id="motorista_grupo"><option value="">--- Selecione grupo* ---</option></select>
+                     </div>
+                     <div class="col-sm-2 s_campos">
+                        <label class="control-label s_labels">Curricular Anual?</label>
+                        <select id="Curricular" class="form-control form-trecho" name="Curricular">
+                           <option value="0">Selecionar...</option>
+                           <option value="1">Sim</option>
+                           <option value="2">Não</option>
+
+                        </select>
+                     </div>
+                     <!-- <div class="col-sm-3 s_campos">
+                       <div class="onoff">
+                          <input type="checkbox" class="toggle" id="onoff1">
+                          <label for="onoff1"></label>
+                       </div>
+                       <p id="estado"></p>
+                     </div> -->
+                     <br>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <div class="help-block with-errors"></div>
+                      <input name="nome_condutor" id="nome_condutor" placeholder="Nome completo*" class="form-control" type="text" required data-error="Nome">
+                      <div class="input-group-icon"><i class="fa fa-user"></i></div>
+                    </div><!-- end form-group -->
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <input name="rg_condutor" id="rg_condutor" placeholder="Digite o RG*" maxlength="11" class="form-control" type="text" required data-error="Digite o RG">
+                      <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div><!-- end form-group -->
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <input name="cpf_condutor" id="cpf_condutor" placeholder="Digite o CPF*" maxlength="11" class="form-control" type="text" required data-error="Digite o CPF">
+                      <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div><!-- end form-group -->
+
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <input name="pis" id="pis" placeholder="Numero do PIS*" maxlength="11" class="form-control" type="text" required data-error="Numero do PIS">
+                      <div class="input-group-icon"><i class="far fa-money-check"></i></div>
+                    </div><!-- end form-group -->
+
+                    <div class="form-group col-sm-3">
+                      <div class="help-block with-errors"></div>
+                      <select name="funcao" id="funcao" class="form-control" required data-error="Selecione a Função*">
+                        <option value="">--- Selecione a Função ---</option>
+                        <option value="Motorista">Motorista</option>
+                        <option value="Ajudante">Ajudante</option>
+                        <option value="Operador Logístico">Operador Logístico</option>
+                      </select>
+                      <div class="input-group-icon"><i class="fa fa-cogs"></i></div>
+                    </div><!-- end form-group -->
+
+                     <!-- <div class="col-sm-3 s_campos">
+                        <label class="control-label s_labels">Função*</label>
+                        <select class="form-control" id="funcao" name="funcao">
+                           <option value="">Selecione</option>
+                           <option value="1">Motorista</option>
+                           <option value="2">Ajudante</option>
+                           <option value="3">Operador Logístico</option>
+                        </select>
+                     </div> -->
+                     <div class="form-group col-sm-4">
+                       <div class="help-block with-errors"></div>
+                       <input name="telefone" id="telefone" placeholder="Telefone de contato*" class="form-control" type="text" required data-error="Coloque telefone válido">
+                       <div class="input-group-icon"><i class="fa fa-phone"></i></div>
+                     </div><!-- end form-group -->
+
+                  </div>
+                  <div class="row">
+
+
+                  </div>
+                  <div class="row">
+                     <hr>
+                  </div>
+                  <fieldset>
+                    <div class="col-sm-offset-10">
+                       <button type="button" class="btn btn-custom" id="salvar_veiculo">Salvar</button>
+                    </div>
+                  </fieldset>
+               </form>
+            </div>
+            <!--fim card-->
+         </div>
+         <!--fim row principal-->
+      </div>
+      <!--fim cadastro motorista-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- jQuery Library -->
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <!-- Popper js -->
+      <script src="js/popper.min.js"></script>
+      <!-- Form Validator -->
+      <script src="js/validator.min.js"></script>
+      <!-- Popup Form main Js -->
+      <script src="js/popup-form.js"></script>
+   </body>
+</html>

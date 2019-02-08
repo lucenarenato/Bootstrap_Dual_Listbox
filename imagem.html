@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="ADAGIO">
+        <meta name="author" content="https://github.com/hakuno">
+        <title>ADAGIO</title>
+        <meta name="environment" content="local">
+        <meta name="csrf-token" content="">
+    </head>
+    <body>
+         <div class="col-sm-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Foto - 3X4 <span class="badge primary"><span class=""></span></span></h3>
+                                        </div>                                        
+                                    </div>
+                                    <div id="fotos" class="row"></div>
+                                    </div><!-- /col-sm-12 -->
+                                </div><!-- /row -->
+                                    <div id="foto" class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <!--<div class="panel-title">Foto 3X4<span class="badge primary pull-right"></span></div>-->
+                                        </div>
+                                        <div class="panel-body" style="padding: 0 !important;">                                       
+                                        
+                                        <ul class="list-group">
+                                        <li class="list-group-item"><div class="form-group"><input type="file" id="uploadArquivoFoto" multiple></div></li>
+                                        </ul>
+                                        <div class="panel-footer clearfix text-right">
+                                        <p>Por favor, envie apenas imagens validas (.jpg .jpeg .png .gif). Arquivos .pdf não são aceitos.</p>
+                                        <p class="pull-left"><span id="foto" class="files-on-hover">0</span> arquivos na fila</p>         
+                                        <button id="salvarRetornoFoto" type="button" class="btn btn-default data-teor="0">Salvar</button>
+                                        </div>
+                                        </div>
+                                        <div id="holderArquivoFoto" style="display: none;"></div>
+                                    
+                                </div>
+                                
+                            </div>
+
+        <!--[if !IE]><!-->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/underscore.min.js"></script>
+        <script src="/assets/js/backbone.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/application.js"></script>
+        <!--<![endif]-->
+    </body>
+</html>
+
+
+<!--  -->
